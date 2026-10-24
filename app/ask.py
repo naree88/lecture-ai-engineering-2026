@@ -8,11 +8,14 @@ Usage:
 
 Chat history is kept in memory until this process ends. Each follow-up includes
 the previous questions and model responses; input token counts include history.
+Response time measures each API call until the full response arrives, including
+network/server latency and SDK retries, but excluding time spent typing.
 This script has no tools or course materials, so course-specific answers can
 still be incorrect. Lecture 3 adds glossary tools to address that limitation.
 """
 
 import argparse
+from time import perf_counter
 
 from google import genai
 from google.genai import errors, types
@@ -35,8 +38,11 @@ def _print_usage(response: types.GenerateContentResponse) -> None:
 def ask(question: str) -> str:
     """Ask a single question without retaining conversation history."""
     with genai.Client(api_key=get_api_key()) as client:
+        started_at = perf_counter()
         response = client.models.generate_content(model=MODEL, contents=question)
+        response_time = perf_counter() - started_at
     _print_usage(response)
+    print(f"[timing] response time: {response_time:.3f} s")
     return response.text or "[No text response returned.]"
 
 
@@ -61,11 +67,14 @@ def chat(initial_question: str | None = None) -> None:
                     continue
 
                 try:
+                    started_at = perf_counter()
                     response = conversation.send_message(question)
+                    response_time = perf_counter() - started_at
                 except errors.APIError as e:
                     print(api_error_message(e.code, e.message))
                 else:
                     _print_usage(response)
+                    print(f"[timing] response time: {response_time:.3f} s")
                     print(f"Assistant: {response.text or '[No text response returned.]'}\n")
         except (EOFError, KeyboardInterrupt):
             print()
