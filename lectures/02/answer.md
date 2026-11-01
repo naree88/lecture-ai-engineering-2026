@@ -76,3 +76,6 @@ Content accuracy is based on the notebook's automated evaluation criteria.
 For the control question, an assertion supported by the FAQ is appropriate. For the final assignment deadline question, the assertion is unsupported because the FAQ does not explicitly identify the stated deadline as the final assignment deadline.
 - Discussion of when fine-tuning is and is not suitable:
 Fine-tuning is suitable for improving format compliance and can also improve content accuracy, as observed in this experiment. However, it does not guarantee correct answers when the provided FAQ lacks sufficient information. Therefore, fine-tuning alone is not sufficient for ensuring reliable answers to such questions; additional information or human review is needed.
+
+- AI assistance:
+I used ChatGPT to clarify parts of the notebook that I did not fully understand. I drafted my answers myself, then used ChatGPT to check my understanding and proofread my writing. ChatGPT also helped organize the results into comparison tables. I personally ran the notebook and checked the reported metrics and model responses against the notebook outputs.
