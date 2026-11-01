@@ -48,7 +48,6 @@ Both format compliance and content accuracy improved after training. The respons
 - Level attempted: Basic
 - Settings or data changed: I reduced `num_train_epochs` from 20 to 10 while keeping all other settings and the dataset unchanged. 
 - Results (comparison tables or numbers):
-- Results (comparison tables or numbers):
 
 ### Training and evaluation results
 
