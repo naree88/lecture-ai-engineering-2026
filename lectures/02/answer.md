@@ -74,6 +74,9 @@ Content accuracy is based on the notebook's automated evaluation criteria.
 | When is the assignment deadline? (control) | asserted | asserted | asserted | asserted |
 
 For the control question, an assertion supported by the FAQ is appropriate. For the final assignment deadline question, the assertion is unsupported because the FAQ does not explicitly identify the stated deadline as the final assignment deadline.
+
+In this experiment, training for 20 epochs resulted in higher content accuracy than training for 10 epochs (95.24% versus 90.48%).
+
 - Discussion of when fine-tuning is and is not suitable:
 Fine-tuning is suitable for improving format compliance and can also improve content accuracy, as observed in this experiment. However, it does not guarantee correct answers when the provided FAQ lacks sufficient information. Therefore, fine-tuning alone is not sufficient for ensuring reliable answers to such questions; additional information or human review is needed.
 
